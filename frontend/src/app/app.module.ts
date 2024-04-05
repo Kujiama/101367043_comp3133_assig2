@@ -1,24 +1,31 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
 
-import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GraphQLModule } from './graphql.module';
-import { NewComponentComponent } from './new-component/new-component.component';
+import { CommonModule } from '@angular/common';
+
 import { EmployeeListComponent } from './employee-list/employee-list.component';
+
+const routes: Routes = [
+  { path: 'list', component:EmployeeListComponent }
+];
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    NewComponentComponent,
     EmployeeListComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
-    GraphQLModule
+    GraphQLModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [
     provideClientHydration()
