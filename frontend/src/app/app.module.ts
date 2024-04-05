@@ -13,13 +13,16 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
 import { EmployeeAddComponent } from './employee-add/employee-add.component';
 import { EmployeeUpdateComponent } from './employee-update/employee-update.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   { path: 'employees', component:EmployeeListComponent },
   { path: 'employee/details/:empID', component:EmployeeDetailComponent },
   { path: 'employee/add', component:EmployeeAddComponent },
   { path: 'employee/update/:empID', component:EmployeeUpdateComponent },
-  { path: '', redirectTo: '/employees', pathMatch: 'full' }
+  { path: 'login', component:LoginComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
 
 
@@ -29,7 +32,9 @@ const routes: Routes = [
     EmployeeListComponent,
     EmployeeDetailComponent,
     EmployeeAddComponent,
-    EmployeeUpdateComponent
+    EmployeeUpdateComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     CommonModule,
