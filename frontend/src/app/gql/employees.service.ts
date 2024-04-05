@@ -64,6 +64,21 @@ export class EmployeesService {
     }
   `;
 
+  updateEmployeeMutation = gql`
+    mutation UpdateEmployeebyId($empId: String!, $firstName: String, $lastName: String, $email: String, $gender: String, $salary: Float) {
+      updateEmployeebyId(id: $empId, firstName: $firstName, lastName: $lastName, email: $email, gender: $gender, salary: $salary) {
+        message
+        employee {
+          id
+          firstName
+          lastName
+          gender
+          email
+          salary
+        }
+      }
+    }
+  `;
 
   //with the Apollo service injected, we can now use it to make queries to the GraphQL server
   constructor(private apollo: Apollo) {}
@@ -114,6 +129,17 @@ export class EmployeesService {
     }).pipe(
       map(result => result.data)
     );
+  }
+
+  //update employee
+  updateEmployee(empId: string, employeeData: any): Observable<any> {
+    return this.apollo.mutate({
+      mutation: this.updateEmployeeMutation,
+      variables: {
+        empId,
+        ...employeeData,
+      },
+    });
   }
   
 

@@ -15,7 +15,7 @@ export class EmployeeAddComponent implements OnInit {
 
   genderList: string[] = ["Male", "Female", "Other"]
 
-  constructor(private employeesService: EmployeesService, private router:Router) { }
+  constructor(private employeesService: EmployeesService, private router:Router) {}
 
   ngOnInit(): void {
     this.newEmployeeForm = new FormGroup({
