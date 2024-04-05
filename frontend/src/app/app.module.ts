@@ -9,16 +9,20 @@ import { GraphQLModule } from './graphql.module';
 import { CommonModule } from '@angular/common';
 
 import { EmployeeListComponent } from './employee-list/employee-list.component';
+import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
 
 const routes: Routes = [
-  { path: 'list', component:EmployeeListComponent }
+  { path: 'employees', component:EmployeeListComponent },
+  { path: 'employee/details/:empID', component:EmployeeDetailComponent },
+  { path: '', redirectTo: '/employees', pathMatch: 'full' }
 ];
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeListComponent
+    EmployeeListComponent,
+    EmployeeDetailComponent
   ],
   imports: [
     CommonModule,
