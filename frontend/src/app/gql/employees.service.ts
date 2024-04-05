@@ -5,7 +5,7 @@
 
 import { Injectable } from '@angular/core';
 import { Apollo, gql} from 'apollo-angular';
-import { Employee , EmployeeResponse} from '../interfaces/employee';
+import { Employee , EmployeeResponse, newEmployee} from '../interfaces/employee';
 import { Observable } from 'rxjs'; //Observable is a class that represents a stream of data
 import { map } from 'rxjs/operators'; //map is an operator that allows us to transform the data in the stream
 
@@ -57,8 +57,8 @@ export class EmployeesService {
   `;
 
   deleteEmployeeMutation = gql`
-    mutation Mutation($deleteEmployeebyIdId: ID!) {
-      deleteEmployeebyId(id: $deleteEmployeebyIdId) {
+    mutation Mutation($empId: ID!) {
+      deleteEmployeebyId(id: $empId) {
         message
       }
     }
@@ -93,15 +93,11 @@ export class EmployeesService {
   }
 
   // addEmployee
-  addEmployee(newEmp: Employee): Observable<any> {
+  addEmployee(newEmp: newEmployee): Observable<any> {
     return this.apollo.mutate<EmployeeResponse>({
       mutation: this.addNewEmployeeMutation,
       variables: {
-        firstName: newEmp.firstName,
-        lastName: newEmp.lastName,
-        email: newEmp.email,
-        gender: newEmp.gender,
-        salary: newEmp.salary
+        ...newEmp
       }
     }).pipe(
       map(result => result.data)
@@ -119,5 +115,6 @@ export class EmployeesService {
       map(result => result.data)
     );
   }
+  
 
 }

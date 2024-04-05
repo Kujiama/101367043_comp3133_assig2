@@ -1,0 +1,36 @@
+
+<div class="flex flex-col justify-center items-center h-screen">
+    <div class="px-4 sm:px-0">
+        <!-- back to employee list -->
+        <a href="/" class="text-blue-600 hover:text-blue-800 font-semibold text-lg">
+            &larr; Back to Employee List
+        </a>
+        <h3 class="font-semibold  text-gray-900 mt-11">New Employee</h3>
+    </div>
+    <form [formGroup]="newEmployeeForm" (ngSubmit)="addEmployee()" class="w-full max-w-lg bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <div class="mb-4">
+        <input type="text" formControlName="firstName" placeholder="First Name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+      </div>
+      <div class="mb-4">
+        <input type="text" formControlName="lastName" placeholder="Last Name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+      </div>
+      <div class="mb-4">
+        <input type="email" formControlName="email" placeholder="Email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+      </div>
+      <div class="mb-4">
+        <select formControlName="gender" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+            <option value="" disabled>Select Gender</option>
+            <option *ngFor="let gender of genderList" [value]="gender">{{gender}}</option>
+        </select>
+      </div>
+      <div class="mb-4">
+        <input type="number" formControlName="salary" placeholder="Salary" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+      </div>
+      <div class="flex items-center justify-between">
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+  

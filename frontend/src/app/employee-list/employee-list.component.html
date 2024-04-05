@@ -4,7 +4,7 @@
         <h1 class="text-base font-semibold leading-6 text-gray-900">Users</h1>
       </div>
       <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-        <a routerLink="/new"
+        <a routerLink="/employee/add"
           class="block rounded-md bg-balck px-3 py-2 text-center text-sm font-semibold text-black shadow-sm hover:text-white hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">Add
           user</a>
       </div>
@@ -32,7 +32,7 @@
                 <td class=" flex flex-row py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0 gap-5">
                   <a [routerLink]="['/employee/update', employee.id]"  class="text-blue-500 hover:text-blue-600">Update</a>
                   <a [routerLink]="['/employee/details', employee.id]" class="text-green-500 hover:text-green-600">Details</a> 
-                  <button class="text-red-500 hover:text-red-600">Delete</button>
+                  <a (click)="deleteEmployee(employee.id)" class="text-red-500 hover:text-red-600">Delete</a>
                 </td>
               </tr>
             </tbody>

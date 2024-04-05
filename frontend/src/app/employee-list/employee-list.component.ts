@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Employee } from '../interfaces/employee';
 import { EmployeesService } from '../gql/employees.service'
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-employee-list',
@@ -20,4 +21,18 @@ export class EmployeeListComponent {
     });
   }
 
+  async deleteEmployee(empId: string) {
+    try {
+      const response = await firstValueFrom(this.employeesService.deleteEmployee(empId));
+      if (response && response.deleteEmployeebyId) {
+        this.employees = this.employees.filter(emp => emp.id !== empId);
+        alert("Employee deleted successfully");
+      } else {
+        alert("Failed to delete employee");
+      }
+    } catch (error) {
+      console.error("Error deleting employee:", error);
+      alert("Failed to delete employee due to an error.");
+    }
+  }
 }
