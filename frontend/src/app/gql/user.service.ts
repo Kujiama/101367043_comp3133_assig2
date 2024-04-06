@@ -61,15 +61,15 @@ export class UsersService {
   }
 
   //login
-  login(username: string, password: string): Observable<UserResponse> {
-    return this.apollo.watchQuery<UserResponse>({
+  login(username: string, password: string): Observable<any> {
+    return this.apollo.watchQuery<any>({
       query: this.loginQuery,
       variables: {
         username,
         password
       }
     }).valueChanges.pipe(
-      map(result => result.data)
+      map(result => result.data.login)
     );
   }
   
