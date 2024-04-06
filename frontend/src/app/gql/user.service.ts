@@ -74,6 +74,18 @@ export class UsersService {
   }
   
   //signUp
+  signUp(username: string, email: string, password: string): Observable<any> {
+    return this.apollo.mutate<any>({
+      mutation: this.signUpQuery,
+      variables: {
+        username,
+        email,
+        password
+      }
+    }).pipe(
+      map(result => result.data.signup)
+    );
+  }
   
   
 }
